@@ -19,6 +19,13 @@ return require('telescope').register_extension {
         return require('telescope.sorters').get_fzy_sorter({ fzy_mod = native_lua_mod })
       end
     end
+
+    local override_generic = if_nil(ext_config.override_generic_sorter, true)
+    if override_generic then
+      config.generic_sorter = function()
+        return require('telescope.sorters').get_fzy_sorter({ fzy_mod = native_lua_mod })
+      end
+    end
   end,
 
   -- requires = ...

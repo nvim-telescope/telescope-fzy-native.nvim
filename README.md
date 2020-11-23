@@ -11,10 +11,24 @@ You can install this with your favorite package manager. Make sure that it insta
 
 ## Usage
 
-You can override the file sorter by default simply by adding
+You can override the file & generic sorter by default simply by adding
 
 ```lua
 require('telescope').load_extension('fzy_native')
 ```
 
 somewhere after your `require('telescope').setup()` call.
+
+To configure them individually, you should do the following:
+
+```lua
+require('telescope').setup {
+    extensions = {
+        fzy_native = {
+            override_generic_sorter = false,
+            override_file_sorter = true,
+        }
+    }
+}
+require('telescope').load_extension('fzy_native')
+```
